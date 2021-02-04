@@ -34,3 +34,24 @@ kubectl get pods -o wide
 minikube service list -p multinode-demo
 ```
 7. Run the service by opening the URL in the web browser
+
+## Cleanup
+1. Remove deployed service
+```
+kubectl delete service to-roman-numeral-svc
+```
+2. Remove deployment
+```
+kubectl delete deployment to-roman-numeral-deployment
+```
+3. Stop cluster
+```
+minikube stop -p multinode-demo
+```
+4. Remove cluster (profile)
+```
+minikube delete -p multinode-demo
+```
+
+## Reference
+- [`kubectl` Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
