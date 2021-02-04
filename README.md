@@ -12,12 +12,16 @@ This tutorial demonstrates how to start a multi-node clusters on [minikube](http
 ```
 minikube start --nodes 2 -p multinode-demo
 ```
-2. Verify the configuration of the cluster
+2. Set default profile
+```
+minikube profile multinode-demo
+```
+3. Verify the configuration of the cluster
 ```
 kubectl get nodes
-minikube status -p multinode-demo
+minikube status
 ```
-3. Deploy our [`to-roman-numeral`](k8s/deployment.yaml) deployment
+3. Deploy deployment [to-roman-numeral-deployment](k8s/deployment.yaml)
 ```
 kubectl apply -f k8s/deployment.yaml
 ```
@@ -29,11 +33,19 @@ kubectl rollout status deployment/to-roman-numeral-deployment
 ```
 kubectl get pods -o wide
 ```
-6. Check the URL of our service
+6. Deploy service [to-roman-numeral-svc](k8s/service.yaml) service
 ```
-minikube service list -p multinode-demo
+kubectl apply -f k8s/service.yaml
 ```
-7. Run the service by opening the URL in the web browser
+7. Check the URL of our service
+```
+minikube service list
+```
+8. Obtain URL of `to-roman-numeral-svc` service
+```
+minikube service --url to-roman-numeral-svc
+```
+9. Run the service by opening the URL in the web browser
 
 ## Cleanup
 1. Remove deployed service
