@@ -37,15 +37,17 @@ kubectl get pods -o wide
 ```
 kubectl apply -f k8s/service.yaml
 ```
-7. Check the URL of our service
-```
-minikube service list
-```
-8. Obtain URL of `to-roman-numeral-svc` service
-```
-minikube service --url to-roman-numeral-svc
-```
-9. Run the service by opening the URL in the web browser
+7. Obtain URL of `to-roman-numeral-svc` service
+
+     Linux
+     ```
+     minikube service list
+     ```
+     MacOS
+     ```
+     minikube service --url to-roman-numeral-svc
+     ```
+8. Run the service by opening the URL in the web browser
 
 ## Cleanup
 1. Remove deployed service
