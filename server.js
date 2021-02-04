@@ -1,10 +1,8 @@
 const express = require('express')
 const app = express()
+const os = require('os')
 
 app.set('view engine', 'ejs')
-
-var apiCallCount = 0
-var serverAddress = ''
 
 const toRomanNumeral = (int) => {
     const romanNumerals = [
@@ -43,25 +41,18 @@ app.get('/convert', (req, res) => {
     let results = {}
     results['number'] = req.query.number
     results['romanNumerals'] = toRomanNumeral(results.number)
-    res.status(200).render('results', { results: results })
+    //console.log(os.hostname())
+    res.status(200).render('results', { results: results, hostname: os.hostname() })
 })
 
 app.get('/roman-numeral/:number', (req, res) => {
     let results = {}
     results['number'] = req.params.number
     results['romanNumerals'] = toRomanNumeral(results.number)
-    results['logs'] = {}
-    results.logs['apiCallCount'] = ++apiCallCount
-    results.logs['serverAddress'] = serverAddress
     res.status(200).json(results)
 })
 
 const port = process.env.PORT || 8099
-const appInstance = app.listen(port, function () {
-    var serverAddress = appInstance.address().address
-    console.log(`Server listening at: ${JSON.stringify(appInstance.address())}`)
+app.listen(process.env.PORT || port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
 })
-
-// app.listen(process.env.PORT || port, () => {
-//     console.log(`Example app listening at http://localhost:${port}`)
-// })
