@@ -33,4 +33,4 @@ kubectl get pods -o wide
 ```
 minikube service list -p multinode-demo
 ```
-7. Run the service by opening the URL
+7. Run the service by opening the URL in the web browser
