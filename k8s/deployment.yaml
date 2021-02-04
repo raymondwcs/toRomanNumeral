@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: to-roman-numeral-deployment
+  labels:
+    app: to-roman-numeral
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: to-roman-numeral
+  template:
+    metadata:
+      labels:
+        app: to-roman-numeral
+    spec:
+      containers:
+      - name: to-roman-numeral
+        image: docker.io/raymondwcs/to_roman_numeral
+        ports:
+        - containerPort: 8099
+
