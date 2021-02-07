@@ -47,8 +47,7 @@ app.get('/convert', (req, res) => {
 
 app.get('/roman-numeral/:number', (req, res) => {
     let results = {}
-    results['number'] = req.params.number
-    results['romanNumerals'] = toRomanNumeral(results.number)
+    results[`${req.params.number}`] = toRomanNumeral(req.params.number)
     res.status(200).json(results)
 })
 
