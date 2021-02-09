@@ -1,6 +1,6 @@
 # Using Multi-Node Kubernetes Clusters
 
-## Overview
+## About
 This tutorial demonstrates how to start a multi-node clusters on [minikube](https://minikube.sigs.k8s.io) and deploy a service to it.
 
 ## Preparation
