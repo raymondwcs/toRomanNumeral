@@ -26,7 +26,7 @@ app.get('/convert', (req, res) => {
             console.error(err);
             return res.status(500);
         }
-        if (value) {
+        if (value) {  // Found in cache
             console.log(`Found (${number2convert}) in cache: ${JSON.stringify(value)}`)
             let results = {}
             results['number'] = number2convert
