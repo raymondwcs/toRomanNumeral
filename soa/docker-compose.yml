@@ -1,0 +1,42 @@
+version: "2"
+services:
+  roman-numeral:
+    container_name: romannumeral
+    restart: always
+    build: service
+    environment:
+      - ROMANNUMERALPORT=3000
+      - PORT=3000 
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - redis
+    networks:
+      - nodeapp-network
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    ports:
+      - "6397:6397"
+    networks:
+      - nodeapp-network
+
+  server:
+    container_name: server
+    restart: always
+    build: server
+    environment:
+      - ROMANNUMERALPORT=3000
+      - PORT=8099
+    ports:
+      - "8099:8099"
+    depends_on: 
+      - roman-numeral
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge
