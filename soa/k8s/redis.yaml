@@ -48,3 +48,17 @@ spec:
         # from the volumes section of this pod
           - name: redis-conf
             mountPath: /etc/redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  type: NodePort
+  selector:
+    app: redis
+  ports:
+    - protocol: TCP
+      nodePort: 32555
+      port: 6379
+      targetPort: 6379
