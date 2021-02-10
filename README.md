@@ -1,4 +1,4 @@
-# Using Multi-Node Kubernetes Clusters
+# Deploy Containerized Node.js Apps Using Docker Compose and Kubernetes
 
 ## About
 This tutorial demonstrates how to start a multi-node clusters on [minikube](https://minikube.sigs.k8s.io) and deploy a service to it.

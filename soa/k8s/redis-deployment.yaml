@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-conf
+data:
+  redis.conf: |
+    appendonly yes
+    protected-mode no
+    bind 0.0.0.0
+    port 6379
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      volumes:
+        # `name` here must match the name
+        # specified in the volume mount
+        - name: redis-conf
+          # Populate the volume with config map data
+          configMap:
+            # `name` here must match the name 
+            # specified in the ConfigMap's YAML 
+            name: redis-conf
+      containers:
+      - name: redis
+        image: redis
+        ports:
+        - containerPort: 6379
+        command:
+          - redis-server
+        args:
+          - /etc/redis/redis.conf
+        volumeMounts:
+        # `name` here must match the name
+        # from the volumes section of this pod
+          - name: redis-conf
+            mountPath: /etc/redis
