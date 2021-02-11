@@ -1,7 +1,7 @@
 # Deploy Containerized Node.js Apps Using Docker Compose and Kubernetes
 
 ## About
-This project implements two versions of a simple Node.js app that converts numbers to roman numerals and demonstrates how they can be deployed using Docker Compose and Kubernetes.
+This tutorial demonstrates how to deploy containerized apps using Docker Compose and Kubernetes.  There are two versions of a simple Node.js app, which converts numbers to roman numerals:
 
 - [Monolithic](server.js) 
 - [SOA](soa/)
@@ -10,7 +10,7 @@ This project implements two versions of a simple Node.js app that converts numbe
 - [minikube](https://minikube.sigs.k8s.io/docs/start/) 1.10.1 or higher
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Deploy the [Monolithic](server.js) using a multi-node Kubernetes cluster
+## Deploy the [Monolithic](server.js) version using a multi-node Kubernetes cluster
 1. Start a cluster with 2 nodes 
 ```
 minikube start --nodes 2 -p multinode-demo
