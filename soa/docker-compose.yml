@@ -31,7 +31,7 @@ services:
     ports:
       - "8099:8099"
     depends_on: 
-      - roman-numeral
+      - roman-numeral-api
     networks:
       - nodeapp-network
 
