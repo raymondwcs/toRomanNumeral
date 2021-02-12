@@ -17,6 +17,7 @@ spec:
       containers:
       - name: to-roman-numeral
         image: docker.io/raymondwcs/to_roman_numeral
+        imagePullPolicy: Always
         ports:
         - containerPort: 8099
 
