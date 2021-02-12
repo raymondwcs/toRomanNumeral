@@ -1,6 +1,6 @@
 version: "2"
 services:
-  roman-numeral:
+  roman-numeral-api:
     container_name: romannumeral
     restart: always
     build: service

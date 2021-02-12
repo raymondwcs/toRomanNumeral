@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: roman-numeral-frontend
   labels:
-    app: frontend
+    app: roman-numeral-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: to-roman-numeral
+      app: roman-numeral-frontend
   template:
     metadata:
       labels:
-        app: to-roman-numeral
+        app: roman-numeral-frontend
     spec:
       containers:
-      - name: to-roman-numeral-frontend
+      - name: roman-numeral-frontend
         image: docker.io/raymondwcs/to_roman_numeral:frontend
         env:
         - name: ROMANNUMERALPORT

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const redis = require("redis");
 
-const ROMANNUMERALURL = `http://roman-numeral:${process.env.ROMANNUMERALPORT}/roman-numeral`
+const ROMANNUMERALURL = `http://roman-numeral-api:${process.env.ROMANNUMERALPORT}/roman-numeral`
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
