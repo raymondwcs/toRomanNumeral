@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: to-roman-numeral-svc
+  name: roman-numeral
 spec:
   type: NodePort
   selector:
-    app: to-roman-numeral
+    app: roman-numeral-frontend
   ports:
     - protocol: TCP
       nodePort: 31000

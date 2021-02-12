@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: to-roman-numeral-deployment
+  name: roman-numeral-monolithic
   labels:
-    app: to-roman-numeral
+    app: roman-numeral-monolithic
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: to-roman-numeral
+      app: roman-numeral-frontend
   template:
     metadata:
       labels:
-        app: to-roman-numeral
+        app: roman-numeral-frontend
     spec:
       containers:
-      - name: to-roman-numeral
+      - name: roman-numeral-monolithic
         image: docker.io/raymondwcs/to_roman_numeral
         imagePullPolicy: Always
         ports:
