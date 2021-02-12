@@ -17,6 +17,7 @@ spec:
       containers:
       - name: roman-numeral-frontend
         image: docker.io/raymondwcs/to_roman_numeral:frontend
+        imagePullPolicy: Always
         env:
         - name: ROMANNUMERALPORT
           value: "3000"
