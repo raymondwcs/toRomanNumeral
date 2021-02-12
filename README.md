@@ -3,14 +3,14 @@
 ## About
 This tutorial demonstrates how to deploy containerized apps using Docker Compose and Kubernetes.  There are two versions of a simple Node.js app, which converts numbers to roman numerals:
 
-- [Monolithic](server.js) 
-- [SOA](soa/)
+- [Single-server](monolithic/) 
+- [Microservice/API](soa/)
 
 ## Preparation
 - [minikube](https://minikube.sigs.k8s.io/docs/start/) 1.10.1 or higher
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Deploy the [Monolithic](server.js) version using a multi-node Kubernetes cluster
+## Deploy the [Single-server](monolithic/) version using a multi-node Kubernetes cluster
 1. Start a cluster with 2 nodes 
 ```
 minikube start --nodes 2 -p multinode-demo
@@ -24,9 +24,9 @@ minikube profile multinode-demo
 kubectl get nodes
 minikube status
 ```
-3. Deploy deployment [to-roman-numeral-deployment](k8s/deployment.yaml)
+3. Deploy deployment [to-roman-numeral-deployment](monolithic/k8s/deployment.yaml)
 ```
-kubectl apply -f k8s/deployment.yaml
+kubectl apply -f monolithic/k8s/deployment.yaml
 ```
 4. Verify the deployment
 ```
@@ -36,9 +36,9 @@ kubectl rollout status deployment/to-roman-numeral-deployment
 ```
 kubectl get pods -o wide
 ```
-6. Deploy service [to-roman-numeral-svc](k8s/service.yaml) service
+6. Deploy [to-roman-numeral-svc](monolithic/k8s/service.yaml) service
 ```
-kubectl apply -f k8s/service.yaml
+kubectl apply -f monolithic/k8s/service.yaml
 ```
 7. Obtain URL of `to-roman-numeral-svc` service
 

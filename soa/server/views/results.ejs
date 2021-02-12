@@ -23,9 +23,15 @@
       <p classs="h5">(<%= results.number %>)</p>
     </div>
     <div class="row justify-content-center align-items-center pt-3">
-      <small>results returned from host: <b>
-          <%= hostname %>
-        </b></small>
+      <% if (results.fromCache) { %>
+        <small><i>cached</i> results returned from host: <b>
+            <%= hostname %>
+          </b></small>
+        <% } else { %>
+          <small>results returned from host: <b>
+              <%= hostname %>
+            </b></small>
+          <% } %>
     </div>
     <div class="row justify-content-center align-items-center pt-3">
       <a href="/">try again</a>

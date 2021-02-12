@@ -31,6 +31,7 @@ app.get('/convert', (req, res) => {
             let results = {}
             results['number'] = number2convert
             results['romanNumerals'] = value.romanNumerals
+            results['fromCache'] = true
             res.status(200).render('results', { results: results, hostname: os.hostname() })
         } else {
             console.log(`Making request: ${ROMANNUMERALURL}...`)
@@ -55,6 +56,7 @@ app.get('/convert', (req, res) => {
                     let answers = json[req.query.number]
                     results['number'] = number2convert
                     results['romanNumerals'] = answers
+                    results['fromCache'] = false
                     res.status(200).render('results', { results: results, hostname: os.hostname() })
                     console.log(`Returned results: ${JSON.stringify(results)}`)
                     // writing to cache...
