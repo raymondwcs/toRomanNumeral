@@ -52,6 +52,11 @@ kubectl apply -f monolithic/k8s/service.yaml
      ```
 8. Run the service by opening the URL in the web browser
 
+9. *(Optional)* Reduce the number of node to 1
+```
+kubectl scale --replicas=1 deployment/roman-numeral-monolithic
+```
+
 ## Cleanup
 1. Remove deployed service
 ```
