@@ -25,6 +25,8 @@ spec:
       labels:
         app: redis
     spec:
+      # https://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/
+      # hostNetwork: true
       volumes:
         # `name` here must match the name
         # specified in the volume mount
@@ -39,6 +41,8 @@ spec:
         image: redis
         ports:
         - containerPort: 6379
+          hostPort: 8888  # allows redis to be connected: redis-cli -h $(minikube ip) -p 8888  
+          # The hostPort setting applies to the Kubernetes containers. The container port will be exposed to the external network at <hostIP>:<hostPort>, where the hostIP is the IP address of the Kubernetes node where the container is running and the hostPort is the port requested by the user. 
         command:
           - redis-server
         args:
@@ -54,7 +58,8 @@ kind: Service
 metadata:
   name: redis
 spec:
-  type: NodePort
+  #type: NodePort
+  type: LoadBalancer
   selector:
     app: redis
   ports:
