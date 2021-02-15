@@ -30,7 +30,7 @@ kubectl apply -f monolithic/k8s/deployment.yaml
 ```
 4. Verify the deployment
 ```
-kubectl rollout status deployment/to-roman-numeral-deployment
+kubectl rollout status deployment/roman-numeral-monolithic
 ```
 5. Check the IP addresses of our pods, to note for future reference
 ```
@@ -48,18 +48,23 @@ kubectl apply -f monolithic/k8s/service.yaml
      ```
      MacOS
      ```
-     minikube service --url to-roman-numeral-svc
+     minikube service --url roman-numeral
      ```
 8. Run the service by opening the URL in the web browser
+
+9. *(Optional)* Reduce the number of node to 1
+```
+kubectl scale --replicas=1 deployment/roman-numeral-monolithic
+```
 
 ## Cleanup
 1. Remove deployed service
 ```
-kubectl delete service to-roman-numeral-svc
+kubectl delete service roman-numeral
 ```
 2. Remove deployment
 ```
-kubectl delete deployment to-roman-numeral-deployment
+kubectl delete deployment roman-numeral-monolithic
 ```
 3. Stop cluster
 ```
